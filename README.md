@@ -8,6 +8,7 @@ I'm using for this application :
 - [Javascript](https://www.javascript.com/)
 - [TailwindCSS](https://tailwindcss.com/)
 - [Redux](https://redux.js.org/)
+- [RapiAPI](https://rapidapi.com/hub) to fetch my music datas with [Shazam Core](https://rapidapi.com/tipsters/api/shazam-core/)
 
 ## System Requirements
 

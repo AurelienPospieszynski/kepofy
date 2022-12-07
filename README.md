@@ -1,37 +1,38 @@
 # Project Lyrics
 
-Develop an elegant React.js Music Application.
+Develop an elegant React.js Music Application 🎶
+
+I'm using for this application :
+
+- [ReactJS](https://beta.reactjs.org/)
+- [Javascript](https://www.javascript.com/)
+- [TailwindCSS](https://tailwindcss.com/)
+- [Redux](https://redux.js.org/)
 
 ## System Requirements
 
-To get started with development, you need to install few tools
+## Systems
 
-1. git
+- [git](https://git-scm.com/downloads) - v2 ou plus
+- [node](https://nodejs.org/en/) - v12 ou plus
+- [npm](https://nodejs.org/en/) - v6 ou plusYou will have it after you install node.
 
-   `git` version 2.13.1 or higher. Download [git](https://git-scm.com/downloads) if you don't have it already.
+  To check your version of npm, run:
 
-   To check your version of git, run:
+  ```shell
+   npm --version
+  ```
 
-   ```shell
-    git --version
-   ```
+  ## Setup du projet
 
-2. node
+```bash
+git clone https://github.com/AurelienPospieszynski/kepofy.git
+cd kepofy
+npm install
+```
 
-   `node` version 16.15.1 or higher. Download [node](https://nodejs.org/en/download/) if you don't have it already.
+Pour lancer le projet :
 
-   To check your version of node, run:
-
-   ```shell
-    node --version
-   ```
-
-3. npm
-
-   `npm` version 5.6.1 or higher. You will have it after you install node.
-
-   To check your version of npm, run:
-
-   ```shell
-    npm --version
-   ```
+```bash
+npm run dev
+```

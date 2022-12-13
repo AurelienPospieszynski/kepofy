@@ -5,6 +5,7 @@ import PlayPause from './PlayPause';
 
 const SongCard = ({ song, activeSong, isPlaying, i, data }) => {
   const dispatch = useDispatch();
+
   const handlePauseClick = () => {
     dispatch(playPause(false));
   };

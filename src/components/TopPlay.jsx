@@ -56,6 +56,43 @@ const TopPlay = () => {
           ))}
         </div>
       </div>
+      <div className="flex flex-row w-full mt-8 ">
+        <div className="flex flex-row items-center justify-center">
+          <h2 className="text-2xl font-bold text-white">Top Artists</h2>
+          <Link to="/top-artists">
+            <p className="text-base text-gray-300 cursor-pointer">See more</p>
+          </Link>
+        </div>
+        <Swiper
+          slidesPerView="auto"
+          spaceBetween={15}
+          freeMode
+          centeredSlides
+          centeredSlidesBounds
+          modules={[FreeMode]}
+          className="mt-4"
+        >
+          {topPlays
+            .filter((song) => {
+              return song.artists != undefined;
+            })
+            ?.map((song, i) => (
+              <SwiperSlide
+                key={song?.key}
+                style={{ width: '25%', height: 'auto' }}
+                className="rounded-full shadow-lg animate-slideright"
+              >
+                <Link to={`/artists/${song?.artists.adamid}`}>
+                  <img
+                    src={song?.images.background}
+                    alt="name"
+                    className="object-cover w-full rounded-full"
+                  ></img>
+                </Link>
+              </SwiperSlide>
+            ))}
+        </Swiper>
+      </div>
     </div>
   );
 };

@@ -13,7 +13,22 @@ import 'swiper/css/free-mode';
 const TopChartCard = ({ song, i }) => {
   return (
     <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2">
-      {song.title}
+      <h3 className="mr-3 text-base font-bold text-white"> {i + 1}.</h3>
+      <div className="flex-row items-center justify-between flex-1">
+        <img
+          className="w-20 h-20 rounded-lg"
+          src={song?.images?.coverart}
+          alt="img"
+        />
+        <div className="flex flex-col justify-center flex-1 mx-3">
+          <Link to={`/songs/${song.key}`}>
+            <p className="text-xl font-bold text-white">{song?.title}</p>
+          </Link>
+          <Link to={`/artists/${song?.artists[0].adamid}`}>
+            <p className="mt-1 text-base text-gray-300">{song?.subtitle}</p>
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
@@ -27,7 +42,11 @@ const TopPlay = () => {
     divRef.current.scrollIntoView({ behavior: 'smooth' });
   });
 
-  const topPlays = data?.slice(0, 5);
+  const topPlays = data
+    ?.filter((song) => {
+      return song?.artists !== undefined;
+    })
+    ?.slice(0, 5);
 
   const handlePauseClick = () => {
     dispatch(playPause(false));

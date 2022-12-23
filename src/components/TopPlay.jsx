@@ -78,19 +78,19 @@ const TopPlay = () => {
             })
             ?.map((song, i) => {
               return (
-                <div>
-                  <SwiperSlide
-                    key={song?.key}
-                    style={{ width: '25%', height: 'auto' }}
-                    className="rounded-full shadow-lg animate-slideright"
-                  >
+                <SwiperSlide
+                  key={song?.key}
+                  style={{ width: '25%', height: 'auto' }}
+                  className="rounded-full shadow-lg animate-slideright"
+                >
+                  <Link to={`/artists/${song?.artists.adamid}`}>
                     <img
-                      src={song?.images.coverart}
+                      src={song?.images.background}
                       alt="name"
                       className="object-cover w-full rounded-full"
                     />
-                  </SwiperSlide>
-                </div>
+                  </Link>
+                </SwiperSlide>
               );
             })}
         </Swiper>

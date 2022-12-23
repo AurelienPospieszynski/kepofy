@@ -73,24 +73,26 @@ const TopPlay = () => {
           className="mt-4"
         >
           {topPlays
-            .filter((song) => {
-              return song.artists != undefined;
+            ?.filter((song) => {
+              return song?.artists !== undefined;
             })
-            ?.map((song, i) => (
-              <SwiperSlide
-                key={song?.key}
-                style={{ width: '25%', height: 'auto' }}
-                className="rounded-full shadow-lg animate-slideright"
-              >
-                <Link to={`/artists/${song?.artists.adamid}`}>
-                  <img
-                    src={song?.images.background}
-                    alt="name"
-                    className="object-cover w-full rounded-full"
-                  ></img>
-                </Link>
-              </SwiperSlide>
-            ))}
+            ?.map((song, i) => {
+              return (
+                <div>
+                  <SwiperSlide
+                    key={song?.key}
+                    style={{ width: '25%', height: 'auto' }}
+                    className="rounded-full shadow-lg animate-slideright"
+                  >
+                    <img
+                      src={song?.images.coverart}
+                      alt="name"
+                      className="object-cover w-full rounded-full"
+                    />
+                  </SwiperSlide>
+                </div>
+              );
+            })}
         </Swiper>
       </div>
     </div>

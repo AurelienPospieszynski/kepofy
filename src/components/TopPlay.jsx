@@ -10,11 +10,18 @@ import { useGetTopChartsQuery } from '../redux/services/shazamCore';
 import 'swiper/css';
 import 'swiper/css/free-mode';
 
-const TopChartCard = ({ song, i }) => {
+const TopChartCard = ({
+  song,
+  i,
+  isPlaying,
+  activeSong,
+  handlePauseClick,
+  handlePlayClick,
+}) => {
   return (
     <div className="w-full flex flex-row items-center hover:bg-[#4c426e] py-2 p-4 rounded-lg cursor-pointer mb-2">
       <h3 className="mr-3 text-base font-bold text-white"> {i + 1}.</h3>
-      <div className="flex-row items-center justify-between flex-1">
+      <div className="flex flex-row items-center justify-between flex-1">
         <img
           className="w-20 h-20 rounded-lg"
           src={song?.images?.coverart}
@@ -29,6 +36,13 @@ const TopChartCard = ({ song, i }) => {
           </Link>
         </div>
       </div>
+      <PlayPause
+        isPlaying={isPlaying}
+        activeSong={activeSong}
+        song={song}
+        handlePause={handlePauseClick}
+        handlePlay={handlePlayClick}
+      />
     </div>
   );
 };
@@ -52,7 +66,7 @@ const TopPlay = () => {
     dispatch(playPause(false));
   };
 
-  const handlePlayClick = () => {
+  const handlePlayClick = (song, i) => {
     dispatch(setActiveSong({ song, data, i }));
     dispatch(playPause(true));
   };
@@ -63,7 +77,7 @@ const TopPlay = () => {
       className="xl:ml-6 ml-0 xl:mb-0 mn-0 mb-6 flex-1 xl:max-w-[500px] max-w-full flex flex-col"
     >
       <div className="flex flex-col w-full">
-        <div className="flex flex-row items-center justify-center">
+        <div className="flex flex-row items-center">
           <h2 className="text-2xl font-bold text-white">Top charts</h2>
           <Link to="/top-charts">
             <p className="text-base text-gray-300 cursor-pointer">See more</p>
@@ -71,12 +85,20 @@ const TopPlay = () => {
         </div>
         <div className="flex flex-col gap-1 mt-4">
           {topPlays?.map((song, i) => (
-            <TopChartCard key={song.key} song={song} i={i} />
+            <TopChartCard
+              key={song.key}
+              song={song}
+              i={i}
+              isPlaying={isPlaying}
+              activeSong={activeSong}
+              handlePauseClick={handlePauseClick}
+              handlePlayClick={() => handlePlayClick(song, i)}
+            />
           ))}
         </div>
       </div>
-      <div className="flex flex-row w-full mt-8 ">
-        <div className="flex flex-row items-center justify-center">
+      <div className="flex-row w-full mt-8 ">
+        <div className="flex flex-row items-center">
           <h2 className="text-2xl font-bold text-white">Top Artists</h2>
           <Link to="/top-artists">
             <p className="text-base text-gray-300 cursor-pointer">See more</p>

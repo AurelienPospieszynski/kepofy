@@ -7,15 +7,29 @@ import { useGetSongDetailsQuery } from '../redux/services/shazamCore';
 
 const SongDetails = () => {
   const dispatch = useDispatch();
-  const { songId } = useParams();
+  const { songid } = useParams();
   const { activeSong, isPlaying } = useSelector((state) => state.player);
   const { data: songData, isFetching: isFetchingSongDetails } =
     useGetSongDetailsQuery({ songid });
 
   return (
-    <div className="mb-10">
-      <h2 className="text-3xl font-bold text-white">Lyrics: </h2>
-      <div className="mt-5"></div>
+    <div className="flex flex-col">
+      <DetailsHeader artistsId="" songData={songData} />
+      <div className="mb-10">
+        <h2 className="text-3xl font-bold text-white">Lyrics: </h2>
+
+        <div className="mt-5">
+          {songData?.sections[1].type === 'LYRICS' ? (
+            songData?.sections[1].text.map((line, i) => (
+              <p className="my-1 text-base text-gray-400">{line}</p>
+            ))
+          ) : (
+            <p className="my-1 text-base text-gray-400">
+              Sorry, there's no lyrics for this song :/
+            </p>
+          )}
+        </div>
+      </div>
     </div>
   );
 };

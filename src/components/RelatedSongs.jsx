@@ -14,6 +14,7 @@ const RelatedSongs = ({
     <div className="flex flex-col w-full mt-6">
       {data?.map((song, i) => (
         <SongBar
+          key={song.key}
           song={song}
           i={i}
           artistId={artistId}

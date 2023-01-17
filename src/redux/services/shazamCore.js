@@ -28,6 +28,10 @@ export const shazamCoreApi = createApi({
   }),
 });
 /* customHook */
-export const { useGetTopChartsQuery, useGetSongDetailsQuery } = shazamCoreApi;
+export const {
+  useGetTopChartsQuery,
+  useGetSongDetailsQuery,
+  useGetSongRelatedQuery,
+} = shazamCoreApi;
 
 export default shazamCoreApi;
